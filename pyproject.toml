@@ -1,0 +1,21 @@
+[tool.poetry]
+name = "mommy"
+version = "0.1.0"
+description = "Web system that manages my mother's work profit."
+authors = ["Felipe Alves <106632694+felipelvs@users.noreply.github.com>"]
+license = "MIT"
+
+[tool.poetry.dependencies]
+python = "^3.10"
+Flask = "^2.1.2"
+
+[tool.poetry.dev-dependencies]
+black = "^22.3.0"
+isort = "^5.10.1"
+flake8 = "^4.0.1"
+pytest = "^7.1.2"
+pytest-flask = "^1.2.0"
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
