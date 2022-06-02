@@ -5,4 +5,4 @@ page.
 
 Currently, the following documents are available:
 
-1. [Requirements elicitation](./elicitation/REQUIREMENTS.md)
+1. [Requirements Specification](./specification/REQUIREMENTS.md)
