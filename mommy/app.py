@@ -5,13 +5,14 @@ If the file is opened for execution, it runs the application.
 """
 
 from flask import Flask
-from views import main_bp
+
+from mommy.views import main_bp
 
 
 def create_app():
     """Creates and configures the Flask instance."""
     app = Flask(__name__)
-    app.config.from_object("config.DevelopmentConfig")
+    app.config.from_object("mommy.config.DevelopmentConfig")
 
     app.register_blueprint(main_bp)
 
