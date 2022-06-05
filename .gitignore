@@ -130,3 +130,7 @@ cython_debug/
 
 # Visual Studio Code
 .vscode
+
+# Development and testing database
+mommy/database-dev.db
+tests/database-tests.db
