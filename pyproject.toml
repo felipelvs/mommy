@@ -11,6 +11,8 @@ Flask = "^2.1.2"
 Bcrypt-Flask = "^1.0.2"
 Flask-SQLAlchemy = "^2.5.1"
 mysqlclient = "^2.1.0"
+Flask-Login = "^0.6.1"
+Flask-WTF = "^1.0.1"
 
 [tool.poetry.dev-dependencies]
 black = "^22.3.0"
