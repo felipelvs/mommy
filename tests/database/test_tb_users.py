@@ -2,7 +2,7 @@
 
 from sqlalchemy.exc import IntegrityError
 
-from mommy.models import Month, Prototype, User
+from mommy.models import User
 
 # * Where do Args come from
 # app: The "app" fixture created on "conftest.py"
@@ -10,36 +10,22 @@ from mommy.models import Month, Prototype, User
 # client: The "pytest-flask" library automatically creates the fixture
 
 
-def test_db_is_clean(db):
-    """Empty the database."""
-    assert db.drop_all() is None
-
-
-def test_db_is_created(db):
-    """Mount the database."""
-    assert db.create_all() is None
-
-
-def test_user_table_is_clean():
-    """Test if users table is empty."""
-    user = User.query.filter_by(email="mommy@python.flask").first()
-
-    assert user is None
-
-
 def test_user_insert_without_email(db):
     """
     Test if the system generates an error with the insertion of a user without e-mail.
     """
-    user = User(email="")
+    user = User()
     user.set_password("correct_password")
 
-    db.session.add(user)
-    db.session.commit()
+    error = False
 
-    user = User.query.filter_by(email="mommy@python.flask").first()
+    try:
+        db.session.add(user)
+        db.session.commit()
+    except IntegrityError:
+        error = True
 
-    assert user is None
+    assert error is True
 
 
 def test_user_insert_without_password(db):
@@ -98,7 +84,7 @@ def test_user_insert_with_existent_password(db):
     Test if the system does not generates an error with the insertion of a user with an
     existent password.
     """
-    user = User(email="mommy2@python.flask")
+    user = User(email="mommy_alt@python.flask")
     user.set_password("correct_password")
 
     error = False

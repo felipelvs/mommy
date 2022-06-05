@@ -4,6 +4,7 @@ import pytest
 from flask_sqlalchemy import SQLAlchemy
 
 from mommy.app import Flask, create_app
+from mommy.models import User
 from mommy.models import db as mommy_db
 
 
@@ -29,5 +30,14 @@ def db(app) -> SQLAlchemy:
     """
     mommy_db.app = app
     mommy_db.init_app(app)
+
+    mommy_db.drop_all()
+    mommy_db.create_all()
+
+    # Insert user
+    user = User(email="admin@root.mommy")
+    user.set_password("correct_password")
+    mommy_db.session.add(user)
+    mommy_db.session.commit()
 
     return mommy_db
