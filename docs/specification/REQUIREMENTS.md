@@ -81,6 +81,11 @@ The system must allow the user to sign into their account.
 
 **Restriction**: The user must be logged into the system to access the module.
 
+### NFR 009
+
+The system must record/traffic the month's **id** using a random UUID rather
+than ascending numbers.
+
 ### FR 003
 
 The system should allow the user to add prototypes in the month.
