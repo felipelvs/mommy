@@ -1,0 +1,140 @@
+{% extends "base.html" %}
+
+{% block title %}Home{% endblock %}
+
+{% block content %}
+<header class="header">
+  <div class="container">
+    <div class="header-left-content">
+      <img
+        src="{{ url_for('static', filename='img/logo/64x64.png') }}"
+        alt="Mommy"
+      />
+    </div>
+
+    <div class="header-right-content">
+      <div>
+        <a href="#" class="header-link">Create an account</a>
+      </div>
+    </div>
+  </div>
+</header>
+
+<main class="container flex-column">
+  <section>
+    <div>
+      <h1 class="title">Summary</h1>
+    </div>
+
+    <div class="row">
+      <div class="column">
+        <div class="card content-box">
+          <div class="card-icon">
+            <i class="bx bx-calendar"></i>
+          </div>
+
+          <div>
+            <div class="card-content-top">
+              <p>Month</p>
+            </div>
+
+            <div class="card-content-bottom">
+              <p>June</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="column">
+        <div class="card content-box">
+          <div class="card-icon">
+            <i class="bx bx-extension"></i>
+          </div>
+
+          <div>
+            <div class="card-content-top">
+              <p>Prototypes</p>
+            </div>
+
+            <div class="card-content-bottom">
+              <p>100</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="column">
+        <div class="card content-box">
+          <div class="card-icon">
+            <i class="bx bx-cloud"></i>
+          </div>
+
+          <div>
+            <div class="card-content-top">
+              <p>Stones</p>
+            </div>
+
+            <div class="card-content-bottom">
+              <p>10000</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="column">
+        <div class="card content-box">
+          <div class="card-icon">
+            <i class="bx bx-wallet"></i>
+          </div>
+
+          <div>
+            <div class="card-content-top">
+              <p>Profit</p>
+            </div>
+
+            <div class="card-content-bottom">
+              <p>R$ 492,04</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div>
+      <h1 class="title">Details</h1>
+    </div>
+
+    <div class="content-box">
+      <div class="container-table">
+        <table>
+          <thead>
+            <th>Date</th>
+            <th>Name</th>
+            <th>Value</th>
+            <th>Quantity</th>
+            <th>Profit</th>
+          </thead>
+
+          <tbody>
+            <tr>
+              <td>06/02/2022</td>
+              <td>
+                <p>Star</p>
+                <p>50 stones</p>
+              </td>
+              <td>R$ 0,025</td>
+              <td>
+                <p>Prototypes: 100</p>
+                <p>Stones: 5000</p>
+              </td>
+              <td>R$ 125</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+</main>
+{% endblock %}

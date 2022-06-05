@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+
+{% block title %}Add Prototype{% endblock %}
+
+{% block content %}
+<div class="split-container">
+  <div class="left-division">
+    <img
+      src="{{ url_for('static', filename='img/logo/256x256.png') }}"
+      alt="Mommy"
+    />
+  </div>
+
+  <div class="right-division">
+    <div class="form-container">
+      <form action="" method="post">
+        <div class="text-center">
+          <p>
+            You are about to remove the
+            <span class="bold">Star</span> prototype, are you sure?
+          </p>
+        </div>
+
+        <div>
+          <input
+            type="submit"
+            value="Yes, remove"
+            class="button primary w-full"
+          />
+        </div>
+
+        <div class="text-center">
+          <a href="#" class="link">Back to panel</a>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+{% endblock %}

@@ -1,0 +1,85 @@
+{% extends "base.html" %}
+
+{% block title %}Add Prototype{% endblock %}
+
+{% block content %}
+<div class="split-container">
+  <div class="left-division">
+    <img
+      src="{{ url_for('static', filename='img/logo/256x256.png') }}"
+      alt="Mommy"
+    />
+  </div>
+
+  <div class="right-division">
+    <div class="form-container">
+      <form action="" method="post">
+        <div>
+          <label for="name" class="form-label">Name</label>
+          <input
+            type="text"
+            name="name"
+            id="name"
+            class="form-input"
+            minlength="2"
+            maxlength="32"
+            required
+          />
+        </div>
+
+        <div>
+          <label for="stones" class="form-label">Stones</label>
+          <input
+            type="number"
+            name="stones"
+            id="stones"
+            class="form-input"
+            min="1"
+            max="400"
+            required
+          />
+        </div>
+
+        <div>
+          <label for="made" class="form-label">Made</label>
+          <input
+            type="number"
+            name="made"
+            id="made"
+            class="form-input"
+            min="1"
+            max="300"
+            required
+          />
+        </div>
+
+        <div class="flex form-radio-container">
+          <label class="form-radio-label mr-8">
+            <input
+              type="radio"
+              name="radio"
+              value="0.025"
+              class="form-radio"
+              checked
+            />
+            R$ 0,025
+          </label>
+
+          <label class="form-radio-label">
+            <input type="radio" name="radio" value="0.04" class="form-radio" />
+            R$ 0,04
+          </label>
+        </div>
+
+        <div>
+          <input type="submit" value="Add" class="button primary w-full" />
+        </div>
+
+        <div class="text-center">
+          <a href="#" class="link">Back to panel</a>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+{% endblock %}

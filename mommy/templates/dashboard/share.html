@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+
+{% block title %}Share{% endblock %}
+
+{% block content %}
+<header class="header">
+  <div class="container">
+    <div class="header-left-content">
+      <img
+        src="{{ url_for('static', filename='img/logo/64x64.png') }}"
+        alt="Mommy"
+      />
+    </div>
+
+    <div class="header-right-content">
+      <div>
+        <a href="#" class="header-link">Home</a>
+      </div>
+
+      <div>
+        <a href="#" class="header-link">Share</a>
+      </div>
+    </div>
+  </div>
+</header>
+
+<main class="container flex-column">
+  <section>
+    <div>
+      <h1 class="title">Share</h1>
+    </div>
+
+    <div class="content-box flex">
+      <div>
+        <a href="" class="button primary">Copy Link</a>
+      </div>
+    </div>
+  </section>
+</main>
+{% endblock %}

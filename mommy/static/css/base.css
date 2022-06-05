@@ -1,0 +1,309 @@
+:root {
+  --background: #f9fafb;
+  --border: #e5e7eb;
+  --primary: #0e9f6e;
+  --primary-hover: #046c4e;
+  --secondary: #f3faf7;
+  --secondary-hover: #bcf0da;
+  --text-dark: #111827;
+  --text-light: #f3f4f6;
+  --text-alt: #6b7280;
+  --white: #ffffff;
+}
+
+* {
+  border: 0;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  background-color: var(--background);
+  color: var(--text-dark);
+  font-family: "Roboto", sans-serif;
+}
+
+.primary {
+  background-color: var(--primary);
+  color: var(--text-light);
+}
+
+.primary:hover {
+  background-color: var(--primary-hover);
+}
+
+.primary:active {
+  background-color: var(--primary);
+  outline-color: #84e1bc;
+  outline-style: solid;
+  outline-width: 4px;
+}
+
+.secondary {
+  background-color: var(--secondary);
+  color: var(--primary);
+}
+
+.secondary:hover {
+  background-color: var(--secondary-hover);
+}
+
+.secondary:active {
+  background-color: var(--secondary);
+  outline-color: #84e1bc;
+  outline-style: solid;
+  outline-width: 4px;
+}
+
+.w-full {
+  width: 100%;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.flex {
+  display: flex;
+}
+
+.flex-column {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.justify-center {
+  justify-content: center;
+}
+
+.bold {
+  font-weight: bold;
+}
+
+.split-container {
+  display: flex;
+  min-height: 100vh;
+  min-width: 100%;
+}
+
+.left-division {
+  align-items: center;
+  background-color: var(--primary);
+  display: flex;
+  justify-content: center;
+  min-height: 100vh;
+  width: 42%;
+}
+
+.right-division {
+  align-items: center;
+  background-color: transparent;
+  display: flex;
+  justify-content: center;
+  width: 58%;
+}
+
+.form-container {
+  max-width: 324px;
+  width: 100%;
+}
+
+.form-container div:not(:last-child) {
+  margin-bottom: 20px;
+}
+
+.form-label {
+  display: block;
+  font-weight: 500;
+  margin-bottom: 10px;
+}
+
+.form-input {
+  background-color: var(--white);
+  border-color: var(--border);
+  border-radius: 8px;
+  border-style: solid;
+  border-width: 1px;
+  box-sizing: border-box;
+  display: block;
+  padding: 10px;
+  width: 100%;
+}
+
+.form-input:focus {
+  outline-color: var(--primary);
+  outline-style: solid;
+  outline-width: 2px;
+}
+
+.button {
+  border-radius: 8px;
+  border-style: none;
+  box-sizing: border-box;
+  cursor: pointer;
+  display: inline-block;
+  font-size: 16px;
+  padding: 12px 24px 12px 24px;
+  text-decoration: none;
+}
+
+.link {
+  color: var(--primary);
+  font-weight: 500;
+  text-decoration: none;
+}
+
+.link:hover {
+  color: var(--primary-hover);
+}
+
+.link:active {
+  color: var(--primary);
+}
+
+.container {
+  margin: auto;
+  max-width: 1280px;
+  padding: 14px;
+}
+
+.header {
+  background-color: var(--primary);
+  width: 100%;
+}
+
+.header .container {
+  display: flex;
+}
+
+.header-right-content {
+  align-items: center;
+  display: flex;
+  gap: 14px;
+  justify-content: right;
+  width: 100%;
+}
+
+.header-link {
+  color: var(--text-light);
+  display: block;
+  padding: 14px;
+  text-decoration: none;
+}
+
+.title {
+  font-size: 24px;
+  font-weight: 500;
+  margin-bottom: 10px;
+}
+
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.column {
+  flex: auto;
+}
+
+.content-box {
+  background-color: var(--white);
+  border-color: var(--border);
+  border-radius: 8px;
+  border-style: solid;
+  border-width: 1px;
+  padding: 16px 24px 16px 24px;
+}
+
+.card {
+  align-items: center;
+  display: flex;
+  gap: 24px;
+}
+
+.card-icon i {
+  color: var(--primary);
+  font-size: 26px;
+}
+
+.card-content-top p {
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.card-content-bottom p {
+  color: var(--text-alt);
+  font-size: 14px;
+}
+
+.left-content {
+  display: flex;
+  white-space: nowrap;
+}
+
+.right-content {
+  display: flex;
+  justify-content: right;
+  width: 100%;
+}
+
+.container-table {
+  overflow-x: auto;
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+  width: 100%;
+}
+
+th {
+  padding: 10px;
+}
+
+td {
+  color: var(--text-alt);
+  padding: 4px 10px 4px 10px;
+}
+
+th,
+td {
+  text-align: left;
+}
+
+.form-radio-label {
+  font-weight: 500;
+  font-size: 14px;
+}
+
+.form-radio-container {
+  gap: 16px;
+}
+
+@media screen and (max-width: 784px) {
+  .left-division {
+    display: none;
+  }
+
+  .right-division {
+    padding: 10px;
+    width: 100%;
+  }
+}
+
+@media screen and (max-width: 640px) {
+  .header {
+    bottom: 0;
+    position: fixed;
+  }
+
+  .header-left-content {
+    display: none;
+  }
+
+  .header-right-content {
+    justify-content: center;
+  }
+}

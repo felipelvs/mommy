@@ -1,0 +1,54 @@
+{% extends "base.html" %}
+
+{% block title %}Sign In{% endblock %}
+
+{% block content %}
+<div class="split-container">
+  <div class="left-division">
+    <img
+      src="{{ url_for('static', filename='img/logo/256x256.png') }}"
+      alt="Mommy"
+    />
+  </div>
+
+  <div class="right-division">
+    <div class="form-container">
+      <form action="" method="post">
+        <div>
+          <label for="email" class="form-label">E-mail</label>
+          <input
+            type="email"
+            name="email"
+            id="email"
+            class="form-input"
+            minlength="6"
+            maxlength="254"
+            required
+          />
+        </div>
+
+        <div>
+          <label for="password" class="form-label">Password</label>
+          <input
+            type="password"
+            name="password"
+            id="password"
+            class="form-input"
+            minlength="8"
+            maxlength="38"
+            required
+          />
+        </div>
+
+        <div>
+          <input type="submit" value="Sign In" class="button primary w-full" />
+        </div>
+
+        <div class="text-center">
+          <p>No account? <a href="#" class="link">Create one!</a></p>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+{% endblock %}
