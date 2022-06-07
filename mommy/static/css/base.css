@@ -304,6 +304,27 @@ td {
   gap: 16px;
 }
 
+.toast {
+  left: 0;
+  margin: auto;
+  max-width: 386px;
+  min-width: 242px;
+  position: fixed;
+  right: 0;
+  text-align: center;
+  top: 26px;
+  width: 80%;
+  z-index: 1;
+}
+
+.toast-error {
+  color: var(--red);
+}
+
+.toast-success {
+  color: var(--primary);
+}
+
 @media screen and (max-width: 784px) {
   .left-division {
     display: none;

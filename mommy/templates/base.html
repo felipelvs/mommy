@@ -28,5 +28,23 @@
   </head>
   <body>
     {% block content %}{% endblock %}
+
+    {% with messages = get_flashed_messages(with_categories=True) %}
+      {% if messages %}
+        <div class="mt-6 space-y-4">
+          {% for category, message in messages %}
+            {% if category == 'error' %}
+              <div class="content-box toast toast-error">
+                <p>{{ message }}</p>
+              </div>
+            {% elif category == 'success' %}
+              <div class="content-box toast toast-success">
+                <p>{{ message }}</p>
+              </div>
+            {% endif %}
+          {% endfor %}
+        </div>
+      {% endif %}
+    {% endwith %}
   </body>
 </html>
