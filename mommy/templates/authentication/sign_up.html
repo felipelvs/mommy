@@ -13,51 +13,66 @@
 
   <div class="right-division">
     <div class="form-container">
-      <form action="" method="post">
+      <form action="{{ url_for('authentication.sign_up') }}" method="post">
+        {{ form.hidden_tag() }}
         <div>
           <label for="email" class="form-label">E-mail</label>
-          <input
-            type="email"
-            name="email"
-            id="email"
-            class="form-input"
-            minlength="6"
-            maxlength="254"
-            required
-          />
+          {{
+            form.email(
+              class="form-input",
+              minlength="6",
+              maxlength="254"
+            )
+          }}
+          {% for error in form.email.errors %}
+            <script>
+              set_invalid_input("email");
+            </script>
+
+            <p class="form-text-error">{{ error }}</p>
+          {% endfor %}
         </div>
 
         <div>
           <label for="password" class="form-label">Password</label>
-          <input
-            type="password"
-            name="password"
-            id="password"
-            class="form-input"
-            minlength="8"
-            maxlength="38"
-            required
-          />
+          {{
+            form.password(
+              class="form-input",
+              minlength="8",
+              maxlength="38"
+            )
+          }}
+          {% for error in form.password.errors %}
+            <script>
+              set_invalid_input("password");
+            </script>
+
+            <p class="form-text-error">{{ error }}</p>
+          {% endfor %}
         </div>
 
         <div>
           <label for="confirm_password" class="form-label">
             Confirm Password
           </label>
+          {{
+            form.confirm_password(
+              class="form-input",
+              minlength="8",
+              maxlength="38"
+            )
+          }}
+          {% for error in form.confirm_password.errors %}
+            <script>
+              set_invalid_input("confirm_password");
+            </script>
 
-          <input
-            type="password"
-            name="confirm_password"
-            id="confirm_password"
-            class="form-input"
-            minlength="8"
-            maxlength="38"
-            required
-          />
+            <p class="form-text-error">{{ error }}</p>
+          {% endfor %}
         </div>
 
         <div>
-          <input type="submit" value="Sign Up" class="button primary w-full" />
+          {{ form.submit(class="button primary w-full") }}
         </div>
 
         <div class="text-center">
