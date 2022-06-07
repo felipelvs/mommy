@@ -5,7 +5,7 @@ If the file is opened for execution, it runs the application.
 """
 
 
-from blueprints.authentication.views import authentication_bp
+from blueprints.authentication.views import authentication_bp, login_manager
 from flask import Flask
 from models import db
 from views import main_bp
@@ -21,6 +21,8 @@ def create_app():
 
     db.app = app
     db.init_app(app)
+
+    login_manager.init_app(app)
 
     return app
 

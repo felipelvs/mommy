@@ -4,6 +4,7 @@ from datetime import datetime
 from uuid import uuid4
 
 from flask_bcrypt import check_password_hash, generate_password_hash
+from flask_login import UserMixin
 from flask_sqlalchemy import SQLAlchemy
 
 db = SQLAlchemy()
@@ -13,7 +14,7 @@ def generate_uuid():
     return str(uuid4())
 
 
-class User(db.Model):
+class User(db.Model, UserMixin):
     """Represents "tb_users" table."""
 
     __tablename__ = "tb_users"

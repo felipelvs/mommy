@@ -76,7 +76,12 @@
         </div>
 
         <div class="text-center">
-          <p>Have an account? <a href="#" class="link">Sign In!</a></p>
+          <p>
+            Have an account?
+            <a href="{{ url_for('authentication.sign_in') }}" class="link"
+              >Sign In!</a
+            >
+          </p>
         </div>
       </form>
     </div>
