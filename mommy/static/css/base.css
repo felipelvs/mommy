@@ -8,6 +8,8 @@
   --text-dark: #111827;
   --text-light: #f3f4f6;
   --text-alt: #6b7280;
+  --red: #f05252;
+  --red-alt: #fdf2f2;
   --white: #ffffff;
 }
 
@@ -135,6 +137,26 @@ html {
   outline-color: var(--primary);
   outline-style: solid;
   outline-width: 2px;
+}
+
+.form-input-error {
+  background-color: var(--red-alt);
+  outline-color: var(--red);
+  outline-style: solid;
+  outline-width: 2px;
+}
+
+.form-input-error:focus {
+  outline-color: var(--red);
+  outline-style: solid;
+  outline-width: 2px;
+}
+
+.form-text-error {
+  color: #f05252;
+  font-size: 14px;
+  font-weight: 500;
+  margin-top: 4px;
 }
 
 .button {
