@@ -1,7 +1,7 @@
 """Authentication Blueprint and Routes."""
 
 from blueprints.authentication.forms import SignInForm, SignUpForm
-from flask import Blueprint, flash, render_template
+from flask import Blueprint, flash, redirect, render_template, url_for
 from flask_login import LoginManager, login_user
 from models import User, db
 
@@ -46,6 +46,7 @@ def sign_up():
             db.session.add(user)
             db.session.commit()
             flash(message="Account successfully created.", category="success")
+            return redirect(url_for("authentication.sign_in"))
 
     return render_template("authentication/sign_up.html", form=form)
 
