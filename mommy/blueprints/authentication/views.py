@@ -29,7 +29,7 @@ def load_user(id: str):
     return User.query.get(id)
 
 
-def init_first_month(user_id: int):
+def init_first_month(user_id: str):
     """Initialize the user's first month if there is no month in tb_months."""
     month = Month.query.filter_by(user_id=user_id).first()
 
@@ -43,7 +43,7 @@ def init_first_month(user_id: int):
     month = Month(
         month=current_month,
         year=current_year,
-        user_id=current_user.id,
+        user_id=user_id,
     )
 
     db.session.add(month)
