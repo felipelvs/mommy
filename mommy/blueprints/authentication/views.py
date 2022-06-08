@@ -1,9 +1,11 @@
 """Authentication Blueprint and Routes."""
 
+from datetime import datetime
+
 from blueprints.authentication.forms import SignInForm, SignUpForm
 from flask import Blueprint, flash, redirect, render_template, url_for
-from flask_login import LoginManager, login_user
-from models import User, db
+from flask_login import LoginManager, current_user, login_user
+from models import Month, User, db
 
 authentication_bp = Blueprint(
     name="authentication", import_name=__name__, url_prefix="/authentication/"
@@ -27,6 +29,29 @@ def load_user(id: str):
     return User.query.get(id)
 
 
+def init_first_month(user_id: int):
+    """Initialize the user's first month if there is no month in tb_months."""
+    month = Month.query.filter_by(user_id=user_id).first()
+
+    if month:
+        return False
+
+    now = datetime.now()
+    current_month = now.strftime("%b")
+    current_year = now.strftime("%Y")
+
+    month = Month(
+        month=current_month,
+        year=current_year,
+        user_id=current_user.id,
+    )
+
+    db.session.add(month)
+    db.session.commit()
+
+    return True
+
+
 @authentication_bp.route("/sign_up/", methods=["GET", "POST"])
 def sign_up():
     """
@@ -45,6 +70,10 @@ def sign_up():
             user.set_password(form.password.data)
             db.session.add(user)
             db.session.commit()
+
+            user = User.query.filter_by(email=form.email.data).first()
+            init_first_month(user.id)
+
             flash(message="Account successfully created.", category="success")
             return redirect(url_for("authentication.sign_in"))
 
