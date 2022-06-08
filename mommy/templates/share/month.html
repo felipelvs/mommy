@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 
-{% block title %}Home{% endblock %}
+{% block title %}{{ summary.month }}{% endblock %}
 
 {% block content %}
 <header class="header">
@@ -41,7 +41,7 @@
             </div>
 
             <div class="card-content-bottom">
-              <p>June</p>
+              <p>{{ summary.month }}</p>
             </div>
           </div>
         </div>
@@ -59,7 +59,7 @@
             </div>
 
             <div class="card-content-bottom">
-              <p>100</p>
+              <p>{{ summary.prototypes_made }}</p>
             </div>
           </div>
         </div>
@@ -77,7 +77,7 @@
             </div>
 
             <div class="card-content-bottom">
-              <p>10000</p>
+              <p>{{ summary.stones_made }}</p>
             </div>
           </div>
         </div>
@@ -95,7 +95,7 @@
             </div>
 
             <div class="card-content-bottom">
-              <p>R$ 492,04</p>
+              <p>{{ summary.profit }}</p>
             </div>
           </div>
         </div>
@@ -120,19 +120,21 @@
           </thead>
 
           <tbody>
+            {% for prototype in details %}
             <tr>
-              <td>06/02/2022</td>
+              <td>{{ prototype.date }}</td>
               <td>
-                <p>Star</p>
-                <p>50 stones</p>
+                <p>{{ prototype.name }}</p>
+                <p>{{ prototype.stones }}</p>
               </td>
-              <td>R$ 0,025</td>
+              <td>{{ prototype.profit }}</td>
               <td>
-                <p>Prototypes: 100</p>
-                <p>Stones: 5000</p>
+                <p>Prototypes: {{ prototype.prototypes_made }}</p>
+                <p>Stones: {{ prototype.stones_made }}</p>
               </td>
-              <td>R$ 125</td>
+              <td>{{ prototype.profit }}</td>
             </tr>
+            {% endfor %}
           </tbody>
         </table>
       </div>

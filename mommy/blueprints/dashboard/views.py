@@ -187,3 +187,9 @@ def close_month(ask: str = "Yes"):
         current_month=current_month,
         current_year=current_year,
     )
+
+
+@dashboard_bp.route("/share/")
+@login_required
+def share():
+    return render_template("dashboard/share.html", user_id=current_user.id)

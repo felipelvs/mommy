@@ -7,6 +7,7 @@ If the file is opened for execution, it runs the application.
 
 from blueprints.authentication.views import authentication_bp, login_manager
 from blueprints.dashboard.views import dashboard_bp
+from blueprints.share.views import share_bp
 from flask import Flask
 from models import db
 from views import main_bp
@@ -20,6 +21,7 @@ def create_app():
     app.register_blueprint(main_bp)
     app.register_blueprint(authentication_bp)
     app.register_blueprint(dashboard_bp)
+    app.register_blueprint(share_bp)
 
     db.app = app
     db.init_app(app)

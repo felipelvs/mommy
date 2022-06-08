@@ -25,42 +25,20 @@
 <main class="container flex-column">
   <section>
     <div>
-      <h1 class="title">Summary</h1>
+      <h1 class="title">Closed Months</h1>
     </div>
 
-    <div class="row">
-      <div class="column">
-        <div class="card content-box justify-center">
-          <div>
-            <a href="" class="link">March 2022</a>
+    {% for month in closed_months %}
+      <div class="row">
+        <div class="column">
+          <div class="card content-box justify-center">
+            <div>
+              <a href="{{ url_for('share.get_month', month_id=month.id) }}" class="link">{{ month.month }} {{ month.year }}</a>
+            </div>
           </div>
         </div>
       </div>
-
-      <div class="column">
-        <div class="card content-box justify-center">
-          <div>
-            <a href="" class="link">April 2022</a>
-          </div>
-        </div>
-      </div>
-
-      <div class="column">
-        <div class="card content-box justify-center">
-          <div>
-            <a href="" class="link">May 2022</a>
-          </div>
-        </div>
-      </div>
-
-      <div class="column">
-        <div class="card content-box justify-center">
-          <div>
-            <a href="" class="link">June 2022</a>
-          </div>
-        </div>
-      </div>
-    </div>
+    {% endfor %}
   </section>
 </main>
 {% endblock %}

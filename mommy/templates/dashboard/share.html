@@ -3,6 +3,15 @@
 {% block title %}Share{% endblock %}
 
 {% block content %}
+<script>
+  function copy_share_url_to_clipboard() {
+    host = window.location.host;
+    share = "{{ url_for('share.list_closed_months', user_id=user_id) }}";
+
+    navigator.clipboard.writeText(host + share);
+  }
+</script>
+
 <header class="header">
   <div class="container">
     <div class="header-left-content">
@@ -18,7 +27,7 @@
       </div>
 
       <div>
-        <a href="#" class="header-link">Share</a>
+        <a href="{{ url_for('dashboard.share') }}" class="header-link">Share</a>
       </div>
     </div>
   </div>
@@ -32,7 +41,9 @@
 
     <div class="content-box flex">
       <div>
-        <a href="" class="button primary">Copy Link</a>
+        <button onclick="copy_share_url_to_clipboard()" class="button primary">
+          Copy Link
+        </button>
       </div>
     </div>
   </section>
