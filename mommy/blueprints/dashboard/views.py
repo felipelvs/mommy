@@ -105,3 +105,22 @@ def add_prototype():
         return redirect(url_for("dashboard.home"))
 
     return render_template("dashboard/add.html", form=form)
+
+
+@dashboard_bp.route(
+    "/remove_prototype/<int:prototype_id>/<ask>", methods=["GET", "POST"]
+)
+@login_required
+def remove_prototype(prototype_id: int, ask: str = "Yes"):
+    prototype = Prototype.query.filter_by(id=prototype_id).first()
+
+    if not prototype:
+        flash(message="Prototype not found on system.", category="error")
+        return redirect(url_for("dashboard.home"))
+
+    if prototype and ask == "No":
+        db.session.delete(prototype)
+        db.session.commit()
+        return redirect(url_for("dashboard.home"))
+
+    return render_template("dashboard/remove.html", prototype=prototype)

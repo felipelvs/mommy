@@ -144,22 +144,27 @@
 
           <tbody>
             {% for prototype in details %}
-              <tr>
-                <td>{{ prototype.date }}</td>
-                <td>
-                  <p>{{ prototype.name }}</p>
-                  <p>{{ prototype.stones }}</p>
-                </td>
-                <td>{{ prototype.profit }}</td>
-                <td>
-                  <p>Prototypes: {{ prototype.prototypes_made }}</p>
-                  <p>Stones: {{ prototype.stones_made }}</p>
-                </td>
-                <td>{{ prototype.profit }}</td>
-                <td>
-                  <a href="" class="link"> Remove </a>
-                </td>
-              </tr>
+            <tr>
+              <td>{{ prototype.date }}</td>
+              <td>
+                <p>{{ prototype.name }}</p>
+                <p>{{ prototype.stones }}</p>
+              </td>
+              <td>{{ prototype.profit }}</td>
+              <td>
+                <p>Prototypes: {{ prototype.prototypes_made }}</p>
+                <p>Stones: {{ prototype.stones_made }}</p>
+              </td>
+              <td>{{ prototype.profit }}</td>
+              <td>
+                <a
+                  href="{{ url_for('dashboard.remove_prototype', prototype_id=prototype.id, ask='Yes') }}"
+                  class="link"
+                >
+                  Remove
+                </a>
+              </td>
+            </tr>
             {% endfor %}
           </tbody>
         </table>
