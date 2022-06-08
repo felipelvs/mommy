@@ -63,7 +63,7 @@ def sign_in():
         user = User.query.filter_by(email=form.email.data).first()
         if user and user.check_password(form.password.data):
             login_user(user)
-            return "Logged in."
+            return redirect(url_for("dashboard.home"))
         else:
             flash(message="Incorrect email address or password.", category="error")
 
