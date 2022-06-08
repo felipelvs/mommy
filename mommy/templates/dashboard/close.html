@@ -13,10 +13,13 @@
 
   <div class="right-division">
     <div class="form-container">
-      <form action="" method="post">
+      <form
+        action="{{ url_for('dashboard.close_month', ask='No') }}"
+        method="get"
+      >
         <div class="text-center">
           <p>
-            You are about to end <span class="bold">June 2022</span>, are you
+            You are about to end <span class="bold">{{ current_month }} {{ current_year }}</span>, are you
             sure?
           </p>
         </div>

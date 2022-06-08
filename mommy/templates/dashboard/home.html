@@ -120,7 +120,11 @@
       </div>
 
       <div class="right-content">
-        <a href="" class="button secondary">Close Month</a>
+        <a
+          href="{{ url_for('dashboard.close_month', ask='Yes') }}"
+          class="button secondary"
+          >Close Month</a
+        >
       </div>
     </div>
   </section>

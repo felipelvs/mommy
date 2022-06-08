@@ -1,6 +1,8 @@
+from datetime import datetime
 from locale import LC_MONETARY, currency, setlocale
 
 from blueprints.dashboard.forms import AddPrototypeForm
+from dateutil import relativedelta
 from flask import Blueprint, flash, redirect, render_template, url_for
 from flask_login import current_user, login_required
 from models import Month, Prototype, db
@@ -68,6 +70,43 @@ def get_month_details(month_id: str):
     return prototypes
 
 
+def get_current_month_name(user_id: str):
+    """Get current month name."""
+    months = Month.query.filter_by(user_id=user_id).all()
+    last_month = months[-1]
+    return last_month.month
+
+
+def get_current_month_year(user_id: str):
+    """Get current month year."""
+    months = Month.query.filter_by(user_id=user_id).all()
+    last_month = months[-1]
+    return last_month.year
+
+
+def close_month_db():
+    date = datetime.now()
+    month = date.strftime("%b")
+    next_month = date.today() + relativedelta.relativedelta(months=1)
+
+    db_month = get_current_month_name(current_user.id)
+    if db_month == next_month.strftime("%b"):
+        return False
+
+    if date.day > 5:
+        month = next_month.strftime("%b")
+
+    new_month = Month(
+        month=month,
+        year=date.year,
+        user_id=current_user.id,
+    )
+    db.session.add(new_month)
+    db.session.commit()
+
+    return True
+
+
 @dashboard_bp.route("/")
 @login_required
 def home():
@@ -124,3 +163,27 @@ def remove_prototype(prototype_id: int, ask: str = "Yes"):
         return redirect(url_for("dashboard.home"))
 
     return render_template("dashboard/remove.html", prototype=prototype)
+
+
+@dashboard_bp.route(
+    "/close_month/<ask>",
+    methods=["GET"],
+)
+@login_required
+def close_month(ask: str = "Yes"):
+    current_month = get_current_month_name(current_user.id)
+    current_year = get_current_month_year(current_user.id)
+
+    if ask == "No":
+        if close_month_db():
+            return redirect(url_for("dashboard.home"))
+        else:
+            flash(message="Unable to close the month.", category="error")
+
+        return redirect(url_for("dashboard.home"))
+
+    return render_template(
+        "dashboard/close.html",
+        current_month=current_month,
+        current_year=current_year,
+    )
