@@ -1,8 +1,9 @@
 from locale import LC_MONETARY, currency, setlocale
 
-from flask import Blueprint, render_template
+from blueprints.dashboard.forms import AddPrototypeForm
+from flask import Blueprint, flash, redirect, render_template, url_for
 from flask_login import current_user, login_required
-from models import Month, Prototype
+from models import Month, Prototype, db
 
 dashboard_bp = Blueprint(
     name="dashboard", import_name=__name__, url_prefix="/dashboard/"
@@ -60,3 +61,28 @@ def home():
     )
 
     return render_template("dashboard/home.html", summary=summary)
+
+
+@dashboard_bp.route("/add_prototype/", methods=["GET", "POST"])
+@login_required
+def add_prototype():
+    form = AddPrototypeForm()
+    if form.validate_on_submit():
+        prototype = Prototype(
+            name=form.name.data,
+            stones=form.stones.data,
+            value=float(form.value.data),
+            prototypes_made=form.made.data,
+        )
+        prototype.stones_made = prototype.stones * prototype.prototypes_made
+        prototype.profit = prototype.stones_made * prototype.value
+        prototype.user_id = current_user.id
+        prototype.month_id = get_current_month_id(current_user.id)
+
+        db.session.add(prototype)
+        db.session.commit()
+
+        flash(message="Prototype successfully added.", category="success")
+        return redirect(url_for("dashboard.home"))
+
+    return render_template("dashboard/add.html", form=form)
