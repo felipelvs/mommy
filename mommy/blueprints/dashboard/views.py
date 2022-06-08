@@ -53,6 +53,21 @@ def get_current_month_id(user_id: str):
     return last_month.id
 
 
+def get_month_details(month_id: str):
+    """Get the details of all prototypes added in the month."""
+    prototypes = Prototype.query.filter_by(month_id=month_id).all()
+
+    if prototypes:
+        for prototype in prototypes:
+            prototype.date = prototype.date.strftime("%d/%m/%Y")
+            prototype.value = "R$ {v}".format(
+                v=prototype.value,
+            ).replace(".", ",")
+            prototype.profit = translate_currency_to_br(prototype.profit)
+
+    return prototypes
+
+
 @dashboard_bp.route("/")
 @login_required
 def home():
@@ -60,7 +75,11 @@ def home():
         month_id=get_current_month_id(current_user.id),
     )
 
-    return render_template("dashboard/home.html", summary=summary)
+    details = get_month_details(
+        month_id=get_current_month_id(current_user.id),
+    )
+
+    return render_template("dashboard/home.html", summary=summary, details=details)
 
 
 @dashboard_bp.route("/add_prototype/", methods=["GET", "POST"])

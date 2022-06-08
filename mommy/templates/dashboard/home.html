@@ -143,22 +143,24 @@
           </thead>
 
           <tbody>
-            <tr>
-              <td>06/02/2022</td>
-              <td>
-                <p>Star</p>
-                <p>50 stones</p>
-              </td>
-              <td>R$ 0,025</td>
-              <td>
-                <p>Prototypes: 100</p>
-                <p>Stones: 5000</p>
-              </td>
-              <td>R$ 125</td>
-              <td>
-                <a href="" class="link"> Remove </a>
-              </td>
-            </tr>
+            {% for prototype in details %}
+              <tr>
+                <td>{{ prototype.date }}</td>
+                <td>
+                  <p>{{ prototype.name }}</p>
+                  <p>{{ prototype.stones }}</p>
+                </td>
+                <td>{{ prototype.profit }}</td>
+                <td>
+                  <p>Prototypes: {{ prototype.prototypes_made }}</p>
+                  <p>Stones: {{ prototype.stones_made }}</p>
+                </td>
+                <td>{{ prototype.profit }}</td>
+                <td>
+                  <a href="" class="link"> Remove </a>
+                </td>
+              </tr>
+            {% endfor %}
           </tbody>
         </table>
       </div>
