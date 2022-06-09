@@ -38,12 +38,12 @@ Go off the air in case of inefficiency, returning only when repaired.
 
 **Restriction**: None.
 
-### NFR 007
+### NFR 001
 
 The system must record/traffic the user's **id** using a random UUID rather
 than ascending numbers.
 
-### NFR 008
+### NFR 002
 
 The system must record/traffic the user's **password** using the bcrypt
 encryption algorithm.
@@ -59,10 +59,11 @@ The system must allow the user to create an account.
   characters.
 - The `confirm_password` field must allow a minimum of 8 and a maximum of 38
   characters.
-- All form fields must be mandatory.
+- All form fields must be required.
 - Fields with invalid data must be highlighted.
 - It should display toasts on successful and unsuccessful attempts.
 - It must redirect the user to the login page if the attempt is successful.
+- If the attempt was successful, the system should start the user's first month
 
 ### FR 002
 
@@ -72,7 +73,7 @@ The system must allow the user to sign into their account.
 - The `email` field must allow a minimum of 6 and a maximum of 254 characters.
 - The `password` field must allow a minimum of 8 and a maximum of 38
   characters.
-- All form fields must be mandatory.
+- All form fields must be required.
 - Fields with invalid data must be highlighted.
 - It should display toasts on unsuccessful attempts.
 - It must redirect the user to the **Dashboard** if the attempt is successful.
@@ -81,12 +82,12 @@ The system must allow the user to sign into their account.
 
 **Restriction**: The user must be logged into the system to access the module.
 
-### NFR 009
+### NFR 001
 
 The system must record/traffic the month's **id** using a random UUID rather
 than ascending numbers.
 
-### FR 003
+### FR 001
 
 The system should allow the user to add prototypes in the month.
 
@@ -98,19 +99,19 @@ The system should allow the user to add prototypes in the month.
 - The `made` field must limit the number to a minimum of 1 and a maximum
   of 300.
 - The `value` field must only accept the values "0.025" and "0.040".
-- All form fields must be mandatory.
+- All form fields must be required.
 - It should display toasts on successful and unsuccessful attempts.
 - It must redirect the user to the **Dashboard** on successful and
   unsuccessful attempts.
 
-### FR 004
+### FR 002
 
 The system should list all prototypes added in the month.
 
 - The data must be: `registration date`, `name`, `stones`, `value`,
   `qty of prototypes`, `qty of stones`, and `profit`.
 
-### FR 005
+### FR 003
 
 The system should allow the user to remove prototypes added in the month.
 
@@ -119,13 +120,13 @@ The system should allow the user to remove prototypes added in the month.
 - It must redirect the user to the **Dashboard** on successful and
   unsuccessful attempts.
 
-### FR 006
+### FR 004
 
 The system should display the monthly summary.
 
 - The data must be: `month`, `total prototypes`, `total stones`, and `profit`.
 
-### FR 007
+### FR 005
 
 The system should allow the user to close the month.
 
@@ -140,7 +141,7 @@ The system should allow the user to close the month.
 - It must redirect the user to the dashboard on successful and unsuccessful
   attempts.
 
-### FR 008
+### FR 006
 
 The system should allow the user to share their months with other people.
 
@@ -151,7 +152,7 @@ The system should allow the user to share their months with other people.
 
 **Restriction**: None.
 
-### FR 009
+### FR 001
 
 The share page should display every month of the user.
 
