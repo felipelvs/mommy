@@ -6,6 +6,18 @@ time and efficiency in her financial control.
 All documentation is in the `docs` directory, which is constantly updated to
 understand better how the project works.
 
+## Important Note
+
+I already developed this project in PHP (with fewer features and another
+interface).
+
+This repository's main objective is to train my skills in code maintenance.
+After that, I'll change the PHP system she uses to this one.
+
+Currently, the essential features are ready (mostly bad practices), so it's
+time to make the code friendly and readable, and of course, a beautiful and
+consistent interface.
+
 ## Technologies
 
 - Languages used on the frontend: **HTML**, **CSS**, and **JavaScript**.
